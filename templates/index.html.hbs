@@ -1,0 +1,49 @@
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Unwordle</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.4.4/css/pico.min.css">
+  </head>
+
+  <body>
+
+    <!-- Header -->
+    <header class="container">
+      <hgroup>
+        <h1>Unwordle</h1>
+        <h2>Search words that match letter pattern to help you cheat in Wordle.</h2>
+      </hgroup>
+    </header>
+    <!-- ./ Header -->
+
+    <!-- Main -->
+    <main class="container">
+
+      <section id="form">
+        <p>Select language and search using word pattern. Use <mark>*</mark> as a wildcard to match any letters.</p>
+        <form action="" method="get">
+          <div class="grid">
+            <select id="lang" name="lang" required>
+                <option value="uk" selected>UA</option>
+                <option value="en">EN</option>
+            </select>
+            <input type="pattern" name="pattern" placeholder="*" aria-label="Word Pattern" required>
+            <button type="submit">Search</button>
+          </div>
+        </form>
+      </section>
+
+      {{#if words}}
+      <section id="search-results">
+        <article style="align-content: center;">
+          <div class="grid" style="justify-items: center; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(5, 1fr); gap: 20px;">
+            {{#each words}}
+              <div><kbd>{{this}}</kbd></div>
+            {{/each}}
+          </div>
+        </article>
+      </section>
+      {{/if}}
+    </main>
+
+  </body>

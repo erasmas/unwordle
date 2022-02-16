@@ -5,12 +5,12 @@ pub type Word = String;
 pub type WordPattern = String;
 pub type Words = Vec<Word>;
 
+#[derive(FromFormField)]
 pub enum Language {
     UK, EN
 }
 
 impl fmt::Display for Language {
-    // TODO: Consider https://github.com/Peternator7/strum
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match *self {
             Language::UK => write!(f, "uk"),
